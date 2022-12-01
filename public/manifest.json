@@ -1,10 +1,16 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Experiment IQ",
+  "name": "xperiment IQ",
+  "start_url": ".",
+  "id": "https://experimentiq.com/",
+  "display": "standalone",
+  "theme_color": "#0c66a6",
+  "background_color": "#cfeffa",
+  "categories": ["education", "business", "productivity", "meetings", "facilitation", "remote work"],
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "48x48",
       "type": "image/x-icon"
     },
     {
@@ -17,9 +23,5 @@
       "type": "image/png",
       "sizes": "512x512"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  ]
 }
