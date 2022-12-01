@@ -1,11 +1,11 @@
-import './Header.scss';
+import '../styles/Header.scss';
 import { Link } from "react-router-dom";
 
 
 export default function Header() {
     return (
     <header className='header'>
-        <Link className='app-name' to={"/"}>Trackmeister</Link>
+        <Link className='app-name' to={"/"}>Experiment IQ</Link>
         <nav>
             
             <Link to={"/tree"}>Tree</Link>&nbsp;&nbsp;|&nbsp;&nbsp;
