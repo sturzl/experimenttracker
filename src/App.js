@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import {
   BrowserRouter,
   Routes,
@@ -12,15 +12,19 @@ import Roadmap from "./pages/Roadmap"
 
 function App() {
   return (
-      <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/experiment" element={<ExperimentForm />} />
-        <Route path="/tree" element={<Tree />} />
-        <Route path="/roadmap" element={<Roadmap />} />
-      </Routes>
-      </BrowserRouter>
+      <div className='app'>
+        <BrowserRouter>
+          <Header />
+          <div className='main'>
+            <Routes>
+              <Route path="/" element={<Landing />} />
+              <Route path="/experiment" element={<ExperimentForm />} />
+              <Route path="/tree" element={<Tree />} />
+              <Route path="/roadmap" element={<Roadmap />} />
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </div>
   )
 }
 
