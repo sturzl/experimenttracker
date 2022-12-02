@@ -50,9 +50,13 @@ function App() {
   const [nodes, setNodes] = useState({
      "my mother got married in pants": data,
      "wizardofoz": {name: "wizardofoz", children: []} ,
-     transactional: {name: "transactional", children: []} ,
-     "paperprototype": {name: "paperprototype", children: []} 
+     "transactional": {name: "transactional", children: []} ,
+     "paperprototype": {name: "paperprototype", children: []},
+     "outcome": {name: "outcome", children: []} ,
+     "vision": {name: "vision", children: []} ,
+     "experiment": {name: "experiment", children: []} 
     });
+
   const [activeNode, setActiveNode] = useState({ name: "my mother got married in pants" });
   const [rootNode, setRootNode] = useState("my mother got married in pants");
 
@@ -96,13 +100,25 @@ function App() {
     return updatedMap;
   };
 
+  const addNodeToNodeTypeList = (node, map) => {
+    const updatedMap = { ...map };
+    if (!updatedMap[node.nodetype]) {
+      updatedMap[node.nodetype] = { name: node.nodetype, children: [] }
+    }
+    const experimentTypeNode = updatedMap[node.nodetype];
+    const updatedChildren = [...experimentTypeNode.children, node];
+    updatedMap[node.nodetype] = { ...experimentTypeNode, children: updatedChildren };
+    return updatedMap;
+  };
+
   const addChildNode = (node, parentId) => {
     setNodes((previousMap) => {
       console.log('previous map', previousMap);
       let updatedMap = addNodeToMainTree(node, parentId, previousMap);
       // add node by ID for subtree views
       updatedMap[node.id] = node;
-      updatedMap = addNodeToExperimentTypeList(node, previousMap);
+      updatedMap = addNodeToExperimentTypeList(node, updatedMap);
+      updatedMap = addNodeToNodeTypeList(node, updatedMap);
       console.log('updated map', updatedMap);
       return updatedMap;
 
@@ -119,7 +135,7 @@ function App() {
             <Route path="/" element={<Landing />} />
             <Route path="/tree" element={<Tree rootNode={nodes[rootNode]} setActiveNode={setActiveNode} />} />
             <Route path="/tree2" element={<TreeTwo nodes={nodes} rootNodeName={rootNode} openPanel={openPanel} />} />
-            <Route path="/roadmap" element={<Roadmap openPanel={openPanel} />} />
+            <Route path="/roadmap" element={<Roadmap openPanel={openPanel} nodes={nodes} />} />
           </Routes>
         </div>
       </BrowserRouter>

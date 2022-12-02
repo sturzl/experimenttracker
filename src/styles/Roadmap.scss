@@ -3,11 +3,61 @@
     width: 100%;
 }
 
-
 .page-header{
 display: flex;
-
 }
+
+.outcome-wrapper {
+    display: flex;
+    margin-top: 200px;
+    width: 100%;
+}
+.outcome-body {
+    border-bottom: 2px #333333 solid;
+    margin-left: 100px;
+    width: 100%;
+}
+.tree-two{
+    margin-bottom: 50px;
+}
+.outcome-label {
+    border-radius: 4px;
+    background: $darkAccent;
+    color: white;
+    text-transform: uppercase;
+    padding: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    width: 200px;
+    margin-top: 17px;
+}
+
+.experiment-wrapper {
+    // margin-top: 200px;
+    // width: 100%;
+}
+
+.experiment-body {
+    border-bottom: 2px #333333 solid;
+    // margin-left: 500px;
+}
+
+.experiment-label {
+    border-radius: 4px;
+    background: $header;
+    color: white;
+    text-transform: uppercase;
+    padding: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    width: 200px;
+    // margin-top: 17px;
+    margin-bottom: 10px;
+}
+
+
 .create-experiment-button {
 
     border: none;
