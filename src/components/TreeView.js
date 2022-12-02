@@ -6,22 +6,20 @@ import '../styles/TreeView.scss'
 
 function RenderCustomNode({nodeDatum, toggleNode, foreignObjectProps}) {
 
-return ( <g>
-  <foreignObject {...foreignObjectProps}>
-  <div className='node'> 
-    <h1 style={{textAlign:"center"}}>{nodeDatum.name}</h1>
-    {nodeDatum.children && 
-    <><h3>{nodeDatum.children.length}</h3>
-    <button width="100%" onClick={toggleNode}>
-    {nodeDatum.__rd3t.collapsed ? "Open" : "Close"}
-      </button></>}
-    </div>
-  </foreignObject>
-</g>)
+return ( <>
+<g>
+<rect fill="lightgrey" width="100" height="100" x="-50" onClick={toggleNode} />
+<text fill="black">
+    <tspan x="10" y="45">{nodeDatum.name}</tspan>
+    {nodeDatum.children &&  <tspan x="10" y="70">{nodeDatum.children.length}</tspan>}
+  </text>
+</g>
+</>
+)
 }
 
 export default function TreeView(data) {
-  const nodeSize = { x: 200, y: 200 };
+  const nodeSize = { x: 100, y: 100 };
   const foreignObjectProps = { width: nodeSize.x, height: nodeSize.y, showModal: false};
 
 

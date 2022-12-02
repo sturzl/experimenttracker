@@ -6,6 +6,12 @@
   }
 
   .node {
-    border: "1px solid black";
-    background-color: $lightAccent;
+    position: relative;
+    left: -10;
+    top: -10;
+    background-color: lightgrey;
   }
+
+  svg .rd3t-node {
+    stroke-width: 0px;
+}
