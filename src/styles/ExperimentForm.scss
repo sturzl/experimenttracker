@@ -25,8 +25,7 @@
         }
     }
 
-    label,
-    legend {
+    label, legend {
         display: block;
         line-height: 2;
         margin-top: 20px;
@@ -38,17 +37,67 @@
         height: 100px;
     }
 
-    input[type="date"],
-    select {
-        text-align: center;
-        width: 150px;
+    .type-duration {
+        display: flex;
+        flex-direction: row;
+        label {
+            margin-right: auto;
+        }
+        select {
+            width: 300px;
+        }
+        .duration {
+            display: flex;
+            height: 35px;
+            line-height: 0;
+            p {
+                margin: 16px 10px;
+            }
+        }
+        input[type="date"] {
+            width: auto;
+            text-align: right;
+            padding-left: 20px;
+            padding-right: 0;
+
+        }
+    }
+
+    .risky-radios {
+
+        display: flex;
+        padding-left: 0;
+        margin-left: 0;
+
+        label {
+            margin-top: 0;
+            margin-right: 20px;
+            span {
+                border: 3px $secondary solid;
+                display: inline-block;
+                width:80px;
+                text-align: center;
+                border-radius: 2px;
+                &.selected {
+                    background-color: $secondary;
+                    color: $darkAccent;
+                }
+            }
+
+        }
+        input[type='radio'] {
+            opacity: 0;
+            margin-top: -45px;
+            margin-left: 0;
+            height: 50px;
+        }
     }
 
     .button-container {
         display: flex;
         justify-content: center;
         margin-top: 25px;
-        
+
         button {
             border-radius: 4px;
             background: $darkAccent;

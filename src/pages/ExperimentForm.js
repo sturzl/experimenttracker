@@ -5,12 +5,24 @@ export default function ExperimentForm(props) {
     const {
         register,
         handleSubmit,
+        watch
     } = useForm();
 
     const onSubmit = (data) => {
         console.log('on submit form data', data);
         props.addExperiment(data);
     };
+
+    const onRadioClick= (event) => {
+        event.currentTarget.classList.toggle('selected');
+    }
+
+    const currentRiskRadioValue = watch("risk", "");
+
+    const radioActive = (radioValue) => {
+        const isActive = radioValue === currentRiskRadioValue;
+        return isActive ? "selected" : "";
+    }
 
     return (<>
         <div className="experiment-form">
@@ -26,8 +38,8 @@ export default function ExperimentForm(props) {
                     <input type="text" {...register("author")} />
                 </label>
 
-                <div className="inline-inputs">
-                    <label className="half-width-input">
+                <div className="type-duration">
+                    <label>
                         Experiment Type
                         <select {...register("type")}>
                             <option value="wizardofoz">Wizard of Oz</option>
@@ -35,11 +47,13 @@ export default function ExperimentForm(props) {
                         </select>
                     </label>
 
-                    <label className="half-width-input">
+                    <label>
                         Duration
-                        <input type="date" {...register("duration-start")} />
-                        &nbsp;to&nbsp;
-                        <input type="date" {...register("duration-end")} />
+                        <div className="duration">
+                            <input type="date" {...register("duration-start")} />
+                            <p>&nbsp;to&nbsp;</p>
+                            <input type="date" {...register("duration-end")} />
+                        </div>
                     </label>
                 </div>
 
@@ -48,19 +62,19 @@ export default function ExperimentForm(props) {
                     <textarea {...register("hypothesis")} />
                 </label>
 
-                <fieldset  {...register("risk")}>
+                <fieldset className="risky-radios">
                     <legend>Risk level</legend>
                     <label>
-                        Low
-                        <input type="radio" />
+                        <span className={radioActive("low")} onClick={onRadioClick}>Low</span>
+                        <input type="radio" value="low" {...register("risk")} />
                     </label>
                     <label>
-                        Medium
-                        <input type="radio" />
+                        <span aria-hidden={true} className={radioActive("medium")} onClick={onRadioClick}>Med</span>
+                        <input aria-label="Medium" type="radio" value="medium" {...register("risk")} />
                     </label>
                     <label>
-                        High
-                        <input type="radio" />
+                        <span className={radioActive("high")}  onClick={onRadioClick}>High</span>
+                        <input type="radio" value="high" {...register("risk")} />
                     </label>
                 </fieldset>
 

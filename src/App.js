@@ -13,20 +13,20 @@ import Roadmap from "./pages/Roadmap"
 
 function App() {
 
-  const initialGlobalState = {experiments: []}
+  // const initialGlobalState = {experiments: []}
 
-  const [globalState, setGlobalState] = useState(initialGlobalState);
+  const [experiments, setExperiments] = useState([]);
 
   useEffect(() => {
-    console.log('globalState update', globalState)
-  }, [globalState]);
+    console.log('globalState update', experiments)
+  }, [experiments]);
 
-  const addExperiment = (form) => {
-    console.log('props form data', form);
+  const addExperiment = (formData) => {
+    console.log('props form data', formData);
     
-    setGlobalState(
+    setExperiments(
       (prev) => {
-        return {...prev, experiments: [...prev.experiments, form]}
+        return [...prev, formData]
       }
     );
   };
