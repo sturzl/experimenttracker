@@ -1,8 +1,12 @@
 @import 'variables';
+.roadmap {
+    width: 100%;
+}
+
 
 .page-header{
 display: flex;
-justify-content: space-between;
+
 }
 .create-experiment-button {
 
@@ -17,10 +21,11 @@ justify-content: space-between;
     letter-spacing: 3px;
     width: 200px;
     margin-top: 17px;
+    margin-left: 700px;
 
     &:hover,
     &:focus-visible {
-        outline: 2px $secondary solid;
+        outline: 2px $header solid;
     }
 
     &:active {

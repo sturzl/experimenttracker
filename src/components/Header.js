@@ -8,9 +8,9 @@ export default function Header() {
             <Link className='app-name' to={"/"}>Experiment&nbsp;IQ</Link>
             {/* {props.activeNode && <h2 style={{ backgroundColor: "red" }}>{props.activeNode}</h2>} */}
             <nav>
-                <Link to={"/tree"}>Tree</Link>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <Link to={"/tree2"}>Tree Two</Link>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <Link to={"/roadmap"}>Roadmap</Link>
+                <Link to={"/tree"}>Tree View</Link>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <Link to={"/roadmap"}>Roadmap View</Link>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <Link to={"/tree2"}>Filter Experiments</Link>
             </nav>
         </header>
     )

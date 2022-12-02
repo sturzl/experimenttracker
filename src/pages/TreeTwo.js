@@ -19,7 +19,7 @@ export default function TreeTwo(props) {
 
   return (<>
     <div className='page-header'>
-      <h1 className="page-title">Tree Two</h1>
+      <h1 className="page-title">Filter Experiments</h1>
       <div className="button-container">
         <button className="create-experiment-button" onClick={props.openPanel}>Create Experiment</button>
       </div>

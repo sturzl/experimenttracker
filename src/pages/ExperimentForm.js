@@ -36,16 +36,7 @@ export default function ExperimentForm(props) {
     }
 
     const getTypeDropdownColorClass = () => {
-        switch (currentTypeDropdownValue) {
-            case 'vision':
-                return 'new';
-            case 'experiment':
-                return 'inProgress';
-            case 'outcome':
-                return 'complete';
-            default:
-                return 'noStatus';
-        }
+        return currentTypeDropdownValue;
     }
 
     const selectedRiskValue = watch("risk", "");
