@@ -35,7 +35,7 @@ const data = {
   }
 
 export default function Tree() {
-    return (<><h1>Tree</h1>
+    return (<><h1 className="page-title">Tree</h1>
 {TreeView(data)}
 </>)
 }

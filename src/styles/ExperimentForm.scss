@@ -1,0 +1,80 @@
+@import 'variables';
+
+.experiment-form {
+    .page-title {
+        margin-left: 0px;
+    }
+
+    margin: 0 auto;
+    width: 60%;
+
+    form * {
+        border: none;
+    }
+
+    input,
+    textarea,
+    select {
+        display: block;
+        box-sizing: border-box;
+        padding: 10px 15px;
+        width: 100%;
+
+        &:focus-visible {
+            outline: 2px $darkAccent solid;
+        }
+    }
+
+    label,
+    legend {
+        display: block;
+        line-height: 2;
+        margin-top: 20px;
+        font-weight: bold;
+    }
+
+    textarea {
+        resize: none;
+        height: 100px;
+    }
+
+    input[type="date"],
+    select {
+        text-align: center;
+        width: 150px;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 25px;
+        
+        button {
+            border-radius: 4px;
+            background: $darkAccent;
+            color: white;
+            text-transform: uppercase;
+            padding: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            width: 120px;
+
+            &:hover,
+            &:focus-visible {
+                outline: 2px $secondary solid;
+            }
+
+            &:active {
+                transition: 0.3s all;
+                transform: translateY(1px);
+                opacity: 0.3;
+            }
+        }
+
+        .clear-button {
+            background-color: $secondary;
+            margin-right: 40px;
+        }
+    }
+}
