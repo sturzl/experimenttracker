@@ -1,0 +1,26 @@
+@import 'variables';
+
+
+.experiment-type-select {
+    width: 250px;
+    background-color: white;
+    border: none;
+    display: block;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    width: 200px;
+    margin-bottom: 30px;
+
+    &:focus-visible {
+        outline: 2px $darkAccent solid;
+    }
+}
+
+.tree-two {
+    .experiment-type-select-label {
+        display: block;
+        line-height: 2;
+        margin-top: 20px;
+        font-weight: bold;
+    }
+}

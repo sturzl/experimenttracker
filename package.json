@@ -26,6 +26,8 @@
 
     "react-scripts": "5.0.1",
 
+    "react-sliding-pane": "^7.3.0",
+
     "sass": "^1.56.1",
 
     "web-vitals": "^3.0.4"

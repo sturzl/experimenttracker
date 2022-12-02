@@ -12,12 +12,38 @@
     form * {
         border: none;
     }
+    
+    .select-container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .experiment-type-select {
+        width: 250px;
+        background-color: white;
+    }
 
     .status-select {
         width: 200px;
         background-color: white;
-        margin-top: -57px;
-        margin-left: 400px;
+        margin-left: 100px;
+        &.noStatus{
+            border-left: 10px $noStatus solid;
+        }
+        &.new{
+            border-left: 10px $new solid;
+        }
+        &.inProgress{
+            border-left: 10px $inProgress solid;
+        }
+        &.complete{
+            border-left: 10px $complete solid;
+        }
+    }
+
+    .type-select {
+        width: 200px;
+        background-color: white;
         &.noStatus{
             border-left: 10px $noStatus solid;
         }

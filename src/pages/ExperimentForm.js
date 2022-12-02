@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import '../styles/ExperimentForm.scss';
 
@@ -10,8 +9,10 @@ export default function ExperimentForm(props) {
     } = useForm();
 
     const onSubmit = (data) => {
-        console.log('on submit form data', data);
-        props.addExperiment(data);
+        data.id = crypto.randomUUID();
+        data.children = [];
+        props.addNode(data);
+        props.closePanel();
     };
 
     const onRadioClick = (event) => {
@@ -19,14 +20,28 @@ export default function ExperimentForm(props) {
     }
 
     const currentStatusDropdownValue = watch("status", "new");
+    const currentTypeDropdownValue = watch("nodetype", "experiment");
 
-    const getStatusDropdownClass = () => {
-        switch(currentStatusDropdownValue){
+    const getStatusDropdownColorClass = () => {
+        switch (currentStatusDropdownValue) {
             case 'new':
                 return 'new';
             case 'in progress':
                 return 'inProgress';
             case 'complete':
+                return 'complete';
+            default:
+                return 'noStatus';
+        }
+    }
+
+    const getTypeDropdownColorClass = () => {
+        switch (currentTypeDropdownValue) {
+            case 'vision':
+                return 'new';
+            case 'experiment':
+                return 'inProgress';
+            case 'outcome':
                 return 'complete';
             default:
                 return 'noStatus';
@@ -42,16 +57,26 @@ export default function ExperimentForm(props) {
 
     return (<>
         <div className="experiment-form">
-            <h1 className="page-title">Create an Experiment</h1>
+            {props.parentNodeName && <h2>Parent node: {props.parentNodeName}</h2>}
             <form onSubmit={handleSubmit(onSubmit)}>
-                <select className={"status-select " + getStatusDropdownClass()} aria-label="status" {...register("status")}>
-                    <option default value="new">New</option>
-                    <option value="in progress">In Progress</option>
-                    <option value="complete">Complete</option>
-                </select>
+
+                <div className="select-container">
+                    <select className={"type-select " + getTypeDropdownColorClass()} aria-label="type" {...register("nodetype")}>
+                        <option default value="experiment">Experiment</option>
+                        <option value="vision">Vision</option>
+                        <option value="outcome">Outcome</option>
+                    </select>
+
+                    <select className={"status-select " + getStatusDropdownColorClass()} aria-label="status" {...register("status")}>
+                        <option default value="new">New</option>
+                        <option value="in progress">In Progress</option>
+                        <option value="complete">Complete</option>
+                    </select>
+                </div>
+
                 <label>
                     Test Name
-                    <input type="text" {...register("test-name")} />
+                    <input type="text" {...register("name")} />
                 </label>
 
                 <label>
@@ -62,7 +87,7 @@ export default function ExperimentForm(props) {
                 <div className="type-duration">
                     <label>
                         Experiment Type
-                        <select {...register("type")}>
+                        <select className={"experiment-type-select"} {...register("type")}>
                             <option value="wizardofoz">Wizard of Oz</option>
                             <option value="transactional">Transactional</option>
                             <option value="paperprototype">Paper prototype</option>

@@ -1,0 +1,31 @@
+@import 'variables';
+
+.page-header{
+display: flex;
+justify-content: space-between;
+}
+.create-experiment-button {
+
+    border: none;
+    border-radius: 4px;
+    background: $darkAccent;
+    color: white;
+    text-transform: uppercase;
+    padding: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    width: 200px;
+    margin-top: 17px;
+
+    &:hover,
+    &:focus-visible {
+        outline: 2px $secondary solid;
+    }
+
+    &:active {
+        transition: 0.3s all;
+        transform: translateY(1px);
+        opacity: 0.3;
+    }
+}

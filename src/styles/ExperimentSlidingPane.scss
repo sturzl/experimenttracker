@@ -1,0 +1,14 @@
+@import 'variables';
+
+.slide-pane {
+
+    .slide-pane__content {
+        background-color: $background;
+    }
+
+    h2.slide-pane__title {
+        margin-left: 20px;
+        color: $darkAccent;
+        font-size: 30px;
+    }
+}
