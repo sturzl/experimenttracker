@@ -6,10 +6,31 @@ import '../styles/TreeView.scss'
 
 function RenderCustomNode({nodeDatum, toggleNode, foreignObjectProps}) {
 
+  let fill = "lightgrey"
+  switch (nodeDatum.name.split(' ')[0]) {
+    case "Product":
+      fill = "#35746b"
+      break;
+    case "Outcome":
+      fill = "#f2bf43"
+      break;
+    case "Opp":
+      fill = "#e0848a"
+      break;
+    case "Solution":
+      fill = "#eaa3a6"
+      break;
+    case "experiment":
+      fill = "#578a82"
+      break;
+    default:
+      // code block
+  }
+
 return (
 <g>
   <svg x="-50">
-  <rect fill="lightgrey" width="100" height="100" onClick={toggleNode}/>
+  <rect fill={fill} width="100" height="100" onClick={toggleNode}/>
   <text fill="black">
     <tspan x="10" y="45">{nodeDatum.name}</tspan>
     {nodeDatum.children &&  <tspan x="10" y="70">{nodeDatum.children.length}</tspan>}
