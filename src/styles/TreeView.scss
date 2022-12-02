@@ -1,0 +1,11 @@
+@import '../styles/variables.scss';
+
+.tree-container {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .node {
+    border: "1px solid black";
+    background-color: $lightAccent;
+  }
