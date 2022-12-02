@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import '../styles/ExperimentForm.scss';
 
@@ -13,14 +14,29 @@ export default function ExperimentForm(props) {
         props.addExperiment(data);
     };
 
-    const onRadioClick= (event) => {
+    const onRadioClick = (event) => {
         event.currentTarget.classList.toggle('selected');
     }
 
-    const currentRiskRadioValue = watch("risk", "");
+    const currentStatusDropdownValue = watch("status", "new");
 
-    const radioActive = (radioValue) => {
-        const isActive = radioValue === currentRiskRadioValue;
+    const getStatusDropdownClass = () => {
+        switch(currentStatusDropdownValue){
+            case 'new':
+                return 'new';
+            case 'in progress':
+                return 'inProgress';
+            case 'complete':
+                return 'complete';
+            default:
+                return 'noStatus';
+        }
+    }
+
+    const selectedRiskValue = watch("risk", "");
+
+    const getRiskRadioClass = (thisRadio) => {
+        const isActive = thisRadio === selectedRiskValue;
         return isActive ? "selected" : "";
     }
 
@@ -28,6 +44,11 @@ export default function ExperimentForm(props) {
         <div className="experiment-form">
             <h1 className="page-title">Create an Experiment</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
+                <select className={"status-select " + getStatusDropdownClass()} aria-label="status" {...register("status")}>
+                    <option default value="new">New</option>
+                    <option value="in progress">In Progress</option>
+                    <option value="complete">Complete</option>
+                </select>
                 <label>
                     Test Name
                     <input type="text" {...register("test-name")} />
@@ -44,6 +65,7 @@ export default function ExperimentForm(props) {
                         <select {...register("type")}>
                             <option value="wizardofoz">Wizard of Oz</option>
                             <option value="transactional">Transactional</option>
+                            <option value="paperprototype">Paper prototype</option>
                         </select>
                     </label>
 
@@ -65,15 +87,15 @@ export default function ExperimentForm(props) {
                 <fieldset className="risky-radios">
                     <legend>Risk level</legend>
                     <label>
-                        <span className={radioActive("low")} onClick={onRadioClick}>Low</span>
+                        <span className={getRiskRadioClass("low")} onClick={onRadioClick}>Low</span>
                         <input type="radio" value="low" {...register("risk")} />
                     </label>
                     <label>
-                        <span aria-hidden={true} className={radioActive("medium")} onClick={onRadioClick}>Med</span>
+                        <span aria-hidden={true} className={getRiskRadioClass("medium")} onClick={onRadioClick}>Med</span>
                         <input aria-label="Medium" type="radio" value="medium" {...register("risk")} />
                     </label>
                     <label>
-                        <span className={radioActive("high")}  onClick={onRadioClick}>High</span>
+                        <span className={getRiskRadioClass("high")} onClick={onRadioClick}>High</span>
                         <input type="radio" value="high" {...register("risk")} />
                     </label>
                 </fieldset>
