@@ -1,4 +1,4 @@
-import TreeView from '../Component/TreeView'
+import TreeView from '../components/TreeView';
 export default function Tree(props) {
 
   return (<>

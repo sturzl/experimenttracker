@@ -1,10 +1,10 @@
 import '../styles/TreeTwo.scss';
-import TreeView from '../Component/TreeView'
+import TreeView from '../components/TreeView';
 import { useState } from 'react';
 
 export default function TreeTwo(props) {
 
-  const [experimentType, setExperimentType] = useState("transactional");
+  const [experimentType, setExperimentType] = useState("root");
   const [displayedNode, setDisplayedNode] = useState(props.rootNodeName);
 
   const changeExperimentType = (event) => {
@@ -31,7 +31,7 @@ export default function TreeTwo(props) {
           <option value="wizardofoz">Wizard of Oz</option>
           <option value="transactional">Transactional</option>
           <option value="paperprototype">Paper prototype</option>
-          <option value="root">Root</option>
+          <option default value="root">Root</option>
         </select>
       </label>
 
