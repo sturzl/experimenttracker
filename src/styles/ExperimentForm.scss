@@ -1,0 +1,146 @@
+@import 'variables';
+
+.experiment-form {
+    .page-title {
+        margin-left: 0px;
+    }
+
+    margin: 0 auto;
+    width: 60%;
+    min-width: 750px;
+
+    form * {
+        border: none;
+    }
+
+    .status-select {
+        width: 200px;
+        background-color: white;
+        margin-top: -57px;
+        margin-left: 400px;
+        &.noStatus{
+            border-left: 10px $noStatus solid;
+        }
+        &.new{
+            border-left: 10px $new solid;
+        }
+        &.inProgress{
+            border-left: 10px $inProgress solid;
+        }
+        &.complete{
+            border-left: 10px $complete solid;
+        }
+    }
+
+    input,
+    textarea,
+    select {
+        display: block;
+        box-sizing: border-box;
+        padding: 10px 15px;
+        width: 100%;
+
+        &:focus-visible {
+            outline: 2px $darkAccent solid;
+        }
+    }
+
+    label, legend {
+        display: block;
+        line-height: 2;
+        margin-top: 20px;
+        font-weight: bold;
+    }
+
+    textarea {
+        resize: none;
+        height: 100px;
+    }
+
+    .type-duration {
+        display: flex;
+        flex-direction: row;
+        label {
+            margin-right: auto;
+        }
+        select {
+            width: 300px;
+        }
+        .duration {
+            display: flex;
+            height: 35px;
+            line-height: 0;
+            p {
+                margin: 16px 10px;
+            }
+        }
+        input[type="date"] {
+            width: auto;
+            text-align: right;
+            padding-left: 20px;
+            padding-right: 0;
+
+        }
+    }
+
+    .risky-radios {
+
+        display: flex;
+        padding-left: 0;
+        margin-left: 0;
+
+        label {
+            margin-top: 0;
+            margin-right: 20px;
+            span {
+                border: 3px $secondary solid;
+                display: inline-block;
+                width:80px;
+                text-align: center;
+                border-radius: 2px;
+                &.selected {
+                    background-color: $secondary;
+                    color: $darkAccent;
+                }
+            }
+
+        }
+        input[type='radio'] {
+            opacity: 0;
+            margin-top: -45px;
+            margin-left: 0;
+            height: 50px;
+        }
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 25px;
+        padding-bottom: 25px;
+
+        button {
+            border-radius: 4px;
+            background: $darkAccent;
+            color: white;
+            text-transform: uppercase;
+            padding: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            width: 120px;
+
+            &:hover,
+            &:focus-visible {
+                outline: 2px $secondary solid;
+            }
+
+            &:active {
+                transition: 0.3s all;
+                transform: translateY(1px);
+                opacity: 0.3;
+            }
+        }
+
+    }
+}
